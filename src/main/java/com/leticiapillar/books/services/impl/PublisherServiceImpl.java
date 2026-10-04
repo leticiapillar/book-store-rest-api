@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -50,6 +51,7 @@ public class PublisherServiceImpl implements PublisherService {
     public void update(UUID id, PublisherRequest publisherRequest) {
         Publisher publisher = getPublisherOrThrow(id);
         publisher.setName(publisherRequest.name());
+        publisher.setUpdatedAt(LocalDateTime.now());
         publisherRepository.save(publisher);
     }
 
@@ -58,6 +60,7 @@ public class PublisherServiceImpl implements PublisherService {
     public void delete(UUID id) {
         Publisher publisher = getPublisherOrThrow(id);
         publisher.setActive(Boolean.FALSE);
+        publisher.setUpdatedAt(LocalDateTime.now());
         publisherRepository.save(publisher);
     }
 
@@ -65,4 +68,5 @@ public class PublisherServiceImpl implements PublisherService {
         return publisherRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Publisher not found: " + id));
     }
+
 }

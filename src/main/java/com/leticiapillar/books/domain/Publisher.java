@@ -31,6 +31,7 @@ public class Publisher {
 
     @OneToMany(mappedBy = "publisher")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @Builder.Default
     private Set<Book> books = new HashSet<>();
 }

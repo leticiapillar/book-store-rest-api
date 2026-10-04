@@ -32,18 +32,24 @@ public class DataLoader implements CommandLineRunner {
                 .createdAt(LocalDateTime.now())
                 .build();
 
-        Author author1 = new Author();
-        author1.setFirstName("Mark");
-        author1.setLastName("Richards");
+        Author author1 = Author.builder()
+                .firstName("Mark")
+                .lastName("Richards")
+                .active(Boolean.TRUE)
+                .createdAt(LocalDateTime.now())
+                .build();
 
         Book book1 = new Book();
         book1.setTitle("Fundamentals of Software Architecture: A Modern Engineering Approach");
         book1.setAuthors(Set.of(author1));
         book1.setPublisher(oReilly);
 
-        Author author2 = new Author();
-        author2.setFirstName("Nathaniel");
-        author2.setLastName("Schutta");
+        Author author2 = Author.builder()
+                .firstName("Nathaniel")
+                .lastName("Schutta")
+                .active(Boolean.TRUE)
+                .createdAt(LocalDateTime.now())
+                .build();
 
         Book book2 = new Book();
         book2.setTitle("Fundamentals of Software Engineering: From Coder to Engineer");
