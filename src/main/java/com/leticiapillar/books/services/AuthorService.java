@@ -12,5 +12,4 @@ public interface AuthorService {
     UUID create(AuthorRequest authorRequest);
     void update(UUID id, AuthorRequest authorRequestRequest);
     void delete(UUID id);
-
 }

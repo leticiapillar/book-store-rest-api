@@ -39,10 +39,13 @@ public class DataLoader implements CommandLineRunner {
                 .createdAt(LocalDateTime.now())
                 .build();
 
-        Book book1 = new Book();
-        book1.setTitle("Fundamentals of Software Architecture: A Modern Engineering Approach");
-        book1.setAuthors(Set.of(author1));
-        book1.setPublisher(oReilly);
+        Book book1 = Book.builder()
+                .title("Fundamentals of Software Architecture: A Modern Engineering Approach")
+                .authors(Set.of(author1))
+                .publisher(oReilly)
+                .active(Boolean.TRUE)
+                .createdAt(LocalDateTime.now())
+                .build();
 
         Author author2 = Author.builder()
                 .firstName("Nathaniel")
@@ -51,10 +54,11 @@ public class DataLoader implements CommandLineRunner {
                 .createdAt(LocalDateTime.now())
                 .build();
 
-        Book book2 = new Book();
-        book2.setTitle("Fundamentals of Software Engineering: From Coder to Engineer");
-        book2.setAuthors(Set.of(author2));
-        book2.setPublisher(oReilly);
+        Book book2 = Book.builder()
+                .title("Fundamentals of Software Engineering: From Coder to Engineer")
+                .authors(Set.of(author2))
+                .publisher(oReilly)
+                .build();
 
         author1.getBooks().add(book1);
         author2.getBooks().add(book2);
@@ -67,7 +71,7 @@ public class DataLoader implements CommandLineRunner {
 
         log.info("All books have been loaded successfully");
         log.info("Publisher: {}", publisherRepository.count());
-        log.info("Books: {}", bookRepository.findAll());
-        log.info("Authors: {}", authorRepository.findAll());
+        log.info("Books: {}", bookRepository.count());
+        log.info("Authors: {}", authorRepository.count());
     }
 }
