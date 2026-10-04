@@ -1,3 +1,10 @@
 spring:
   application:
-    name: books-rest-api
+    name: bookstore-rest-api
+  datasource:
+    url: jdbc:postgresql://localhost:${POSTGRES_PORT:5432}/${POSTGRES_DB:bookstore}
+    username: ${POSTGRES_USER:bookstore}
+    password: ${POSTGRES_PASSWORD:bookstore}
+  jpa:
+    hibernate:
+      ddl-auto: update
