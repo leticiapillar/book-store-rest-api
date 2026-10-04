@@ -1,13 +1,18 @@
 package com.leticiapillar.books.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -15,5 +20,6 @@ public class Author {
     private String firstName;
     private String lastName;
     @ManyToMany(mappedBy = "authors")
-    private Set<Book> books;
+    @ToString.Exclude
+    private Set<Book> books = new HashSet<>();
 }

@@ -7,4 +7,4 @@ spring:
     password: ${POSTGRES_PASSWORD:bookstore}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
