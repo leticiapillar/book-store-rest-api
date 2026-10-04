@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Component
@@ -25,8 +26,11 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Publisher oReilly = new Publisher();
-        oReilly.setName("O'Reilly");
+        Publisher oReilly = Publisher.builder()
+                .name("O'Reilly")
+                .active(Boolean.TRUE)
+                .createdAt(LocalDateTime.now())
+                .build();
 
         Author author1 = new Author();
         author1.setFirstName("Mark");
